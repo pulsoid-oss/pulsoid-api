@@ -9,13 +9,15 @@
 4. [Errors](#errorsr)
 5. [Endpoints](#endpoints)
 	1. [Read Heart Rate via Rest](#read_heart_rate_via_rest)
-	2. [Read Heart Rate via WebSocket](#read_heart_rate_via_websocket)(not implemented)
+	2. [Read Heart Rate via WebSocket](#read_heart_rate_via_websocket)
 	3. [Write Heart Rate via Rest](#write_heart_rate_via_rest)(not implemented)
 
 ## General integration information<a name="general_information"></a>
 Welcome to the Pulsoid integration guide. Root Pulsoid API domain is `https://dev.pulsoid.net`. All communication is done in JSON. All endpoints have a soft rate limit of 20 requests per second. 
 ## Authentication<a name="authentication"></a>
-### Token issuing
+### OAuth2 
+Contact support@pulsoid.net for further information.
+### Manual Token issuing
 To obtain a token go to https://pulsoid.net/ui/keys and click the button "Create new token". Note that token issuing is a BRO plan feature available under paid subscription or trial. OAuth2 auth protocol implementation is a work in progress. 
 ### Validate token<a name="validate"></a>
 
@@ -92,7 +94,7 @@ curl --request GET \
 ## Endpoints<a name="endpoints"></a>
 ### Read Heart Rate via Rest<a name="read_heart_rate_via_rest"></a> 
 ---------------
-Allows reading the latest heart rate of the user. Note that most heart rate monitors can measure changes in heart rate once per second, so it is reasonable to query this endpoint once per 500 ms to receive real-time heart rate data. 
+This method allows reading the latest heart rate of the user. Note that most heart rate monitors can measure changes in heart rate once per second, so it is reasonable to query this endpoint once per 500 ms to receive real-time heart rate data. 
 #### Request
 | name        | value|           
 | ------------- |:-------------:|
@@ -115,6 +117,31 @@ curl --request GET \
   --header 'Content-Type: application/json' 
 ```
 #### Response Example
+```json
+{
+  "timestamp": 1625310655000,
+  "data": {
+    "heart_rate": 40
+  }
+}
+```
+---------------
+### Read Heart Rate via Rest<a name="read_heart_rate_via_websocket"></a> 
+---------------
+This method allows reading the heart rate of the user in real-time. Websocket connection can be interrupted at any point in time, make sure to have retry logic with backoff.
+#### Request
+| name        | value|           
+| ------------- |:-------------:|
+|url|`wss://dev.pulsoid.net/api/v1/data/real_time`|
+|scope| `data:heart_rate:read`|
+|query| `access_token`|
+
+#### Websocket URL Request Example
+
+```bash
+wss://dev.pulsoid.net/api/v1/data/real_time?access_token=8c4da3ce-7ed7-4a19-a1f1-058498661e45
+```
+#### Websocket Message Example
 ```json
 {
   "timestamp": 1625310655000,
