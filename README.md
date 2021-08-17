@@ -4,7 +4,9 @@
 ## Table of contents
 1. [General integration information](#general_information)
 2. [Authentication](#authentication)
-	1. [Validate token](#validate)
+	1. [OAuth2](#oauth2)
+	2. [Manual Token issuing](#manual_token_issuing)
+	3. [Validate token](#validate)
 3. [Scopes](#scopes)
 4. [Errors](#errorsr)
 5. [Endpoints](#endpoints)
@@ -15,9 +17,9 @@
 ## General integration information<a name="general_information"></a>
 Welcome to the Pulsoid integration guide. Root Pulsoid API domain is `https://dev.pulsoid.net`. All communication is done in JSON. All endpoints have a soft rate limit of 20 requests per second. 
 ## Authentication<a name="authentication"></a>
-### OAuth2 
+### OAuth2 <a name="oauth2"></a>
 Contact support@pulsoid.net for further information.
-### Manual Token issuing
+### Manual Token issuing<a name="manual_token_issuing"></a>
 To obtain a token go to https://pulsoid.net/ui/keys and click the button "Create new token". Note that token issuing is a BRO plan feature available under paid subscription or trial. OAuth2 auth protocol implementation is a work in progress. 
 ### Validate token<a name="validate"></a>
 
