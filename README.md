@@ -280,7 +280,7 @@ curl --request GET \
 }
 ```
 ---------------
-### Read Heart Rate via Rest<a name="read_heart_rate_via_websocket"></a> 
+### Read Heart Rate via Websocket<a name="read_heart_rate_via_websocket"></a> 
 ---------------
 This method allows reading the heart rate of the user in real-time. Websocket connection can be interrupted at any point in time, make sure to have retry logic with backoff.
 #### Request
