@@ -262,6 +262,13 @@ This method allows reading the latest heart rate of the user. Note that most hea
 |measured_at|number|Unix timestamp in milliseconds|
 |data|object|Holds metrics data|
 |data.heart_rate|number|User's latest received heart rate|
+
+#### Specific Errors
+| http status code | reason|           
+| -------------|:-------------:|
+|412|User doesn't have any heart rate data|
+
+
 #### Curl Request Example
 
 ```bash
