@@ -63,20 +63,24 @@ http://localhost/?code=fedc8790-df28-4928-9dcf-55a4d7aa1f5e
 3) On your server, get an access token by making this request:
 ```bash
 POST https://pulsoid.net/oauth2/token
-    ?client_id=<your client ID>
-    &client_secret=<your client secret>
-    &code=<authorization code received above>
-    &grant_type=authorization_code
-    &redirect_uri=<your registered redirect URI>
+Content-Type: application/x-www-form-urlencoded
+
+client_id=<your client ID>
+&client_secret=<your client secret>
+&code=<authorization code received above>
+&grant_type=authorization_code
+&redirect_uri=<your registered redirect URI>
 ```
 Here is a sample request:
 ```bash
 POST https://pulsoid.net/oauth2/token
-    ?client_id=3d3fa070-8358-4984-ae32-94392185df63
-    &client_secret=a8262283-f568-4ec3-be84-1c4758dc1a82
-    &code=fedc8790-df28-4928-9dcf-55a4d7aa1f5e
-    &grant_type=authorization_code
-    &redirect_uri=http://localhost
+Content-Type: application/x-www-form-urlencoded   
+
+grant_type=authorization_code 
+&code=fedc8790-df28-4928-9dcf-55a4d7aa1f5e
+&client_id=3d3fa070-8358-4984-ae32-94392185df63
+&client_secret=a8262283-f568-4ec3-be84-1c4758dc1a82
+&redirect_uri=http://localhost
 ```
 4) We respond with a JSON-encoded access token. The response looks like this:
 ```bash
