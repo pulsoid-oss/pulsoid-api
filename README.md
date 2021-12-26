@@ -15,6 +15,7 @@
 	1. [Read Heart Rate via Rest](#read_heart_rate_via_rest)
 	2. [Read Heart Rate via WebSocket](#read_heart_rate_via_websocket)
 	3. [Write Heart Rate via Rest](#write_heart_rate_via_rest)(not implemented)
+	4. [Read user's data](#read_profile)
 
 ## General integration information<a name="general_information"></a>
 Welcome to the Pulsoid integration guide. Root Pulsoid API domain is `https://dev.pulsoid.net`. All communication is done in JSON. All endpoints have a soft rate limit of 20 requests per second. 
@@ -218,6 +219,7 @@ curl --request GET \
 ```
 ## List of supported scopes<a name="scopes"></a>
 - `data:heart_rate:read`
+- `profile:read`
 
 ## Errors<a name="errorsr"></a>
 ### Format
@@ -313,6 +315,37 @@ wss://dev.pulsoid.net/api/v1/data/real_time?access_token=8c4da3ce-7ed7-4a19-a1f1
   "data": {
     "heart_rate": 40
   }
+}
+```
+---------------
+### Read profile information<a name="read_profile"></a> 
+---------------
+This method allows reading the information of the user. It includes premium status, channel, and login(can be an email). 
+#### Request
+| name        | value|           
+| ------------- |:-------------:|
+|url|`https://pulsoid.net/api/v1/profile`|
+|method|`GET`|
+|scope| `profile:read`|
+
+#### Response
+| name        |type| description|           
+| -------------|:-------------|:-------------:|
+|channel|string|User's channel e.g. twitch.tv/pulsoid|
+|login|string|User's login e.g. pulsoid, support@pulsoid.net|
+
+#### Curl Request Example
+
+```bash
+curl --request GET \
+  --url https://pulsoid.net/api/v1/profile \
+  --header 'Authorization: Bearer 8c4da3ce-7ed7-4a19-a1f1-058498661e45'
+```
+#### Response Example
+```json
+{
+	"channel": "twitch.tv/pulsoid",
+	"login": "support@pulsoid.net"
 }
 ```
 ---------------
