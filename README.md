@@ -324,7 +324,7 @@ This method allows reading the information of the user. It includes premium stat
 #### Request
 | name        | value|           
 | ------------- |:-------------:|
-|url|`https://pulsoid.net/api/v1/profile`|
+|url|`https://dev.pulsoid.net/api/v1/profile`|
 |method|`GET`|
 |scope| `profile:read`|
 
