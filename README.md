@@ -9,6 +9,7 @@
         2. [OAuth2 Refreshing the token](#oauth2_refresh_token)
     3. [Manual Token issuing](#manual_token_issuing)
     4. [Validate token](#validate)
+    5. [Revoke token](#revoke)
 3. [Scopes](#scopes)
 4. [Errors](#errorsr)
 5. [Endpoints](#endpoints)
@@ -180,6 +181,35 @@ We recommend performing a refresh when you receive a 401 Unauthorized.
 
 ### Manual Token issuing<a name="manual_token_issuing"></a>
 To obtain a token go to https://pulsoid.net/ui/keys and click the button "Create new token". Note that token issuing is a BRO plan feature available under paid subscription or trial. OAuth2 auth protocol implementation is a work in progress.
+
+### Revoke token<a name="revoke"></a>
+
+---------------
+#### Request
+| name        | value|           
+| ------------- |:-------------:|
+|url|`https://dev.pulsoid.net/oauth2/revoke`|
+|method|`POST`|
+
+Parameters explained:
+
+| Name   |      Type      |  Description |
+|----------|:-------------:|------:|
+| token |  string | Obtained access token |
+
+#### Response
+#### Curl Request Example
+
+```bash
+curl --request POST \
+  --url https://dev.pulsoid.net/oauth2/revoke \
+  --header 'Content-Type: application/x-www-form-urlencoded' \
+  --data token=ac902193-f705-4db6-8132-cb3243520734
+```
+---------------
+#### Response Example
+```200 OK```
+
 ### Validate token<a name="validate"></a>
 
 ---------------
