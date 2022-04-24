@@ -26,7 +26,8 @@ Welcome to the Pulsoid integration guide. Root Pulsoid API domain is `https://de
 ## Authentication<a name="authentication"></a>
 ### OAuth2<a name="oauth2_intro"></a>
 This guide describes how to use Pulsoid Authentication to enable your application to take actions on behalf of a Pulsoid account or access certain data about users’ accounts. The preferred method of authentication is OAuth. We use parts of the OAuth 2.0 protocol.
-### OAuth2 implicit code flow <a name="oauth2_auth_code"></a>
+### OAuth2 Authroization Code Grant Type <a name="oauth2_auth_code"></a>
+NOTE: Authroization Code Grant Type flow requires trusted server.
 [“Authorization Code Grant” in the OAuth2 RFC](https://datatracker.ietf.org/doc/html/rfc6749#section-4.1)
 
 1) Send the user you want to authenticate to your registered redirect URI. An authorization page will ask the user to sign up or log into Pulsoid and allow the user to choose whether to authorize your application/identity system.
