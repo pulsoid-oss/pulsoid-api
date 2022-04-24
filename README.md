@@ -5,8 +5,10 @@
 1. [General integration information](#general_information)
 2. [Authentication](#authentication)
     1. [OAuth2](#oauth2_intro)
-        1. [OAuth2 Authroization Code](#oauth2_auth_code)
+        1. [OAuth2 Authroization Code Grant Type](#oauth2_auth_code)
         2. [OAuth2 Refreshing the token](#oauth2_refresh_token)
+        3. [OAuth2 Password Grant Type](#oauth2_password_grant_type)
+        4. [OAuth2 Client Credentials(server token) Grant Type](#oauth2_client_credentials)
     3. [Manual Token issuing](#manual_token_issuing)
     4. [Validate token](#validate)
     5. [Revoke token](#revoke)
@@ -17,6 +19,7 @@
     2. [Read Heart Rate via WebSocket](#read_heart_rate_via_websocket)
     3. [Write Heart Rate via Rest](#write_heart_rate_via_rest)(not implemented)
     4. [Read user's data](#read_profile)
+    5. [Create profile](#create_profile)
 
 ## General integration information<a name="general_information"></a>
 Welcome to the Pulsoid integration guide. Root Pulsoid API domain is `https://dev.pulsoid.net`. All communication is done in JSON. All endpoints have a soft rate limit of 20 requests per second.
@@ -179,6 +182,7 @@ When a user disconnects an app, we delete all tokens for that user. Both refresh
 We recommend performing a refresh when you receive a 401 Unauthorized.
 
 
+
 ### Manual Token issuing<a name="manual_token_issuing"></a>
 To obtain a token go to https://pulsoid.net/ui/keys and click the button "Create new token". Note that token issuing is a BRO plan feature available under paid subscription or trial. OAuth2 auth protocol implementation is a work in progress.
 
@@ -248,7 +252,9 @@ curl --request GET \
 ```
 ## List of supported scopes<a name="scopes"></a>
 - `data:heart_rate:read`
+- `data:heart_rate:write`
 - `profile:read`
+- `profiles:create`
 
 ## Errors<a name="errorsr"></a>
 ### Format
